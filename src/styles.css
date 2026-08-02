@@ -1,1 +1,248 @@
 /* You can add global styles to this file, and also import other style files */
+@charset "UTF-8";
+
+@page {
+  size: a4;
+}
+
+body {
+  font-family: Oxygen, sans-serif;
+}
+
+.bg-dark {
+  background-color: #2DDFC1 !important;
+}
+
+.navbar {
+  background-color: #87cefa !important;
+  color: #fff;
+  border-radius: 0;
+  height: 90px;
+  box-shadow: 1px 3px 15px #000;
+}
+
+.navbar button img {
+  height: 24px;
+}
+
+a img {
+  margin-left: 20px;
+  height: 60px;
+  width: 60px;
+  border-radius: 100px;
+  box-shadow: 1px 1px 2px #000;
+}
+
+.navbar-dark .navbar-toggler {
+  color: #FFF;
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar-off ul {
+  background-color: #000;
+  color: #fff;
+  max-width: 250px;
+  position: absolute;
+  top: 100px;
+  left: -250px;
+  height: 500px;
+  overflow-y: auto;
+  transition: all 0.3s ease-out;
+  width: 200px;
+  z-index: 1000;
+}
+
+.sidebar-open ul {
+  left: 15px;
+  opacity: 1;
+}
+
+li .menu {
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  color: #FFF;
+  width: 200px;
+}
+
+li .menu:hover {
+  color: #1466b8 !important;
+  background-color: #999;
+  cursor: pointer;
+}
+
+.backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+}
+
+.menu-barra {
+  position: absolute;
+  right: 25px;
+}
+
+.menu-barra ul li {
+  border: 2px solid #1466b8;
+  border-radius: 20px;
+  margin-left: 20px;
+  width: 120px;
+  text-align: center;
+  background-color: #1466b8;
+}
+
+.menu-barra ul li a {
+    color:#FFF !important;
+    transition: 0.9s;
+}
+
+.menu-barra ul li a:hover {
+  color:#2DDFC1 !important;
+  cursor: pointer;
+}
+
+
+.barra-preta {
+  background-color: #000 !important;
+  box-shadow: 1px 3px 15px #9400d3;
+}
+
+.objeto-preto{
+  background-color: #000 !important;
+}
+
+.texto-branco {
+  color: #fff !important;
+}
+
+.sombra-botao {
+  box-shadow: 2px 3px 3px #5d8aa8;
+  border-radius: 0px;
+}
+
+.sombra {
+  box-shadow: 1px 1px 2px #000;
+  border-radius: 0px;
+}
+
+.bg-master {
+  background-color: #5d8aa8;
+}
+
+.corpo-form {
+  background-color: #ebedf0;
+}
+
+.json-branco {
+  color: #fff;
+}
+
+.sidebar-off ul {
+  background-color: #000;
+  color: #fff;
+  max-width: 250px;
+  position: absolute;
+  top: 80px;
+  left: -250px;
+  height: 500px;
+  overflow-y: auto;
+  transition: all 0.3s ease-out;
+  width: 200px;
+  z-index: 1000;
+}
+
+.sidebar-open ul {
+  left: 0px;
+  opacity: 1;
+}
+
+li .menu {
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  color: #FFF;
+  width: 200px;
+}
+
+li .menu:hover {
+  color: red !important;
+  background-color: #fff !important;
+}
+
+.backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+}
+
+@media (min-width: 280px) and (max-width: 410px)  {
+  img.logo {
+    width: 60vw !important;
+  }
+  .ajusta-fonte-home {
+    font-size: 12pt !important;
+  }
+}
+
+@media (min-width: 411px) and (max-width: 575px) and (orientation: portrait) {
+  img.logo {
+    width: 45vw !important;
+  }
+  .ajusta-fonte-home {
+    font-size: 12pt !important;
+  }
+}
+
+@media (min-width: 576px) {
+  img.logo {
+    width: 50vw !important;
+  }
+  .ajusta-fonte-home {
+    font-size: 16pt !important;
+  }
+}
+
+@media (min-width: 768px) {
+  img.logo {
+    width: 35vw !important;
+  }
+  .ajusta-fonte-home {
+    font-size: 16pt !important;
+  }
+}
+
+@media (min-width: 992px) {
+  img.logo {
+    width: 20vw !important;
+    margin-left: 10px !important;
+  }
+  .ajusta-fonte-home {
+    font-size: 16pt !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  img.logo {
+    width: 13vw !important;
+    margin-left: 10px !important;
+  }
+  .ajusta-fonte-home {
+    font-size: 16pt !important;
+  }
+}
+
+.margin-global {
+  margin-top: 150px !important;
+}
