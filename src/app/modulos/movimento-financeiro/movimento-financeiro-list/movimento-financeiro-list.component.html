@@ -1,1 +1,117 @@
-<p>movimento-financeiro-list works!</p>
+<div class="col-md-12" style="margin-top: 50px;">
+  <nav>
+    <ol class="breadcrumb bg-white">
+      <li class="breadcrumb-item"><a routerLink="/">Início</a></li>
+      <li class="breadcrumb-item active">Listagem</li>
+    </ol>
+  </nav>
+<div class="col-12 col-md-12 d-flex justify-content-center">
+  <div>
+      <button (click)="mostrarReceita()" class="btn btn-outline-primary btn-sm"><i class="fas fa-money-bill-wave"></i> Receita</button>
+      <button (click)="mostrarDespesa()" class="btn btn-outline-danger btn-sm"><i class="fas fa-money-bill-wave"></i> Despesa</button> 
+  </div>   
+</div>
+  @if(mostrarListaReceita){
+      <div class="row mb-4">
+    <div class="col-md">
+      <h1 class="h5 border-left pl-2">
+        Lista de Receitas
+      </h1>
+    </div>
+    <div class="col-md-12 col-lg-12 col-xl-12 d-flex justify-content-end">
+      <button routerLink="new" class="btn btn-primary float-right">
+        <i class="fas fa-user-plus"></i> Nova Receita
+      </button>
+    </div>
+  </div>
+  <hr>
+  <div id="table" class="table-responsive">
+    <table class="table table-borderless">
+      <thead>
+        <tr class="bg-dark text-light">
+          <th>ID</th>
+          <th>Descrição</th>
+          <th>Valor</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(lista of listaReceitas; track lista.id; let i = $index){
+        <tr>
+          <td>{{ lista.id }}</td>
+          <td>{{ lista.descricaoReceita }}</td>
+          <td>{{ lista.valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) }}</td>
+          <td>{{ lista.statusRecebimento }}</td>
+          <td>
+            <button (click)="editar(lista.id)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
+            @if(lista.id > 0){
+              <button (click)="recuperarDados(lista)" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#staticBackdrop"><i class="fas fa-user-slash"></i></button>
+            }
+
+          </td>
+        </tr>
+      } @empty {
+        <div class="d-flex justify-content-center mt-3 ml-5">
+          <div class="alert alert-warning" style="width: 800px;" role="alert">
+            A lista de raças esta vazia!
+          </div>
+        </div>
+      }
+      </tbody>
+    </table>
+  </div>
+  }
+  @if(mostrarListaDespesa){
+      <div class="row mb-4">
+    <div class="col-md">
+      <h1 class="h5 border-left pl-2">
+        Lista de Despesas
+      </h1>
+    </div>
+    <div class="col-md-12 col-lg-12 col-xl-12 d-flex justify-content-end">
+      <button routerLink="new" class="btn btn-primary float-right">
+        <i class="fas fa-user-plus"></i> Nova Despesa
+      </button>
+    </div>
+  </div>
+  <hr>
+  <div id="table" class="table-responsive">
+    <table class="table table-borderless">
+      <thead>
+        <tr class="bg-dark text-light">
+          <th>ID</th>
+          <th>Descrição</th>
+          <th>Valor</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(lista of listaDespesas; track lista.id; let i = $index){
+        <tr>
+          <td>{{ lista.id }}</td>
+          <td>{{ lista.descricaoDespesa }}</td>
+          <td>{{ lista.valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})  }}</td>
+          <td>{{ lista.statusPagamento }}</td>
+          <td>
+            <button (click)="editar(lista.id)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
+            @if(lista.id > 0){
+              <button (click)="recuperarDados(lista)" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#staticBackdrop"><i class="fas fa-user-slash"></i></button>
+            }
+
+          </td>
+        </tr>
+      } @empty {
+        <div class="d-flex justify-content-center mt-3 ml-5">
+          <div class="alert alert-warning" style="width: 800px;" role="alert">
+            A lista de raças esta vazia!
+          </div>
+        </div>
+      }
+      </tbody>
+    </table>
+  </div>
+  }
+
+</div>
