@@ -29,10 +29,10 @@
         </tr>
       </thead>
       <tbody>
-        @for(lista of listaPeriodos; track lista.id; let i = $index){
+        @for(lista of listarDespesas; track lista.id; let i = $index){
         <tr>
           <td>{{ lista.id }}</td>
-          <td>{{ lista.mesAno }}</td>
+          <td>{{ lista.descricao }}</td>
           <td>{{ lista.status }}</td>
           <td>
             <button (click)="editar(lista.id)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
@@ -54,3 +54,4 @@
   </div>
 
 </div>
+

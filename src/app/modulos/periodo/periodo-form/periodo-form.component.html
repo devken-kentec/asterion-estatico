@@ -1,1 +1,44 @@
-<p>periodo-form works!</p>
+<div class="col-12 col-md-12">
+    <div class="margin-global">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Início</a></li>
+            <li class="breadcrumb-item"><a routerLink="/periodo">Listagem</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Período Financeiro</li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="col-12 col-md-12 mt-5">
+        <form [formGroup]="periodoForm">
+            <div class="row col-md-12 mt-4">
+                <div class="form-group col-md-1">
+                    <label for="id">ID:</label>
+                    <input type="text" class="form-control" id="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="periodo">Período:</label>
+                    <input type="text" class="form-control" id="periodo" style="text-align: center;"
+                        formControlName="periodo" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="status">Status do Período:</label>
+                    <select id="status" class="form-select" formControlName="status">
+                        <option value="">Selecione</option>
+                        <option>Ativo</option>
+                        <option>Inativo</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6" style="margin-bottom: 50px;">
+                    <div class="d-grid gap-2 mt-4">
+                        <button class="btn btn-success btn-gravar" type="button"
+                            (click)="salvarStatusPeriodo()">
+                            Atualizar Período Financeiro
+                        </button>
+                    </div>
+                </div>
+            </div>    
+        </form>
+         <hr>
+    </div>
+</div>    
