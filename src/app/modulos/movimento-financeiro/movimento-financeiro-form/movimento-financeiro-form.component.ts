@@ -6,9 +6,9 @@ import { SharedService } from '../../../../shared/shared.service';
 import { take } from 'rxjs';
 import { DescricaoReceita } from '../../../domain/descricao-receita.domain';
 import { DescricaoDespesa } from '../../../domain/descricao-despesa.domain';
-import { MovimentoCaixa } from '../../../domain/movimento-caixa.domain';
 import { MovimentoFinanceiroService } from '../movimento-financeiro.service';
 import { MovimentoFinanceiroDespesa, MovimentoFinanceiroReceita } from '../../../domain/movimento-financeiro.domain';
+import { Carteira } from '../../../domain/carteira.domain';
 
 @Component({
   selector: 'app-movimento-financeiro-form',
@@ -28,13 +28,11 @@ export class MovimentoFinanceiroFormComponent {
     private movimentoFinanceiroService = inject(MovimentoFinanceiroService);
 
     movFinForm!: FormGroup;
-    caixaForm!: FormGroup;
-    contaForm!: FormGroup;
     idFin!: boolean;
     descricaoReceitas: DescricaoReceita[] = [];
     descricaoDespesas: DescricaoDespesa[] = [];
-    movimentosCaixa: MovimentoCaixa[] = [];
     periodos: Periodo[] = [];
+    carteiras: Carteira[] = [];
 
     ngOnInit() {
       this.movFinForm = this.fb.group({
@@ -56,34 +54,15 @@ export class MovimentoFinanceiroFormComponent {
         observacao: [''],
         userId: [''],
         periodoId: [''],
+        carteiraId: [''], 
         descricaoReceitaId: [''],
         descricaoDespesaId: ['']
-      });
-
-      this.caixaForm = this.fb.group({
-        id: [''],
-        entrada: [''],
-        saida: [''],
-        data: [''],
-        status: [''],
-        userId: [''],
-        movimentoFinanceiroId: ['']
-      });
-
-    this.contaForm = this.fb.group({
-        id: [''],
-        entrada: [''],
-        saida: [''],
-        data: [''],
-        status: [''],
-        prazo: [''],
-        userId: [''],
-        movimentoFinanceiroId: ['']
       });
       
       this.preencherComboboxPeriodo();
       this.preencherComboboxDescricaoReceita();
       this.preencherComboboxDescricaoDespesa();
+      this.preencherComboboxCarteira();
       this.idFin = true;
     }
 
@@ -136,6 +115,18 @@ export class MovimentoFinanceiroFormComponent {
       });
     }
 
+    public preencherComboboxCarteira() {
+      this.sharedService.comboboxCarteira().pipe(take(1)).subscribe({
+         next: (res) => {
+           this.carteiras = res;  
+         },
+         error: (err) => {
+           console.log(err);
+           //this.sharedService.warningShow("Ops! Algo Errado!!", "Verifique o Console!");
+         }
+      });
+    }
+
     public salvarMovimentoFinanceiro() {
       let form = this.movFinForm;
       if(form.valid){
@@ -167,7 +158,6 @@ export class MovimentoFinanceiroFormComponent {
         }
       }
     }
-
     public novoRegistro(): void {
       this.movFinForm.reset();
     }

@@ -63,8 +63,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="valor">Valor:</label>
-                        <input style="text-align: right;" type="number" class="form-control" id="valor"
-                            formControlName="valor" />
+                        <input style="text-align: right;" type="number" class="form-control" id="valor"formControlName="valor" />
                     </div>
                 </div>
                 <div class="row col-md-12 mt-3">
@@ -75,8 +74,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="dataRecebimento">Data da Recebimento:</label>
-                        <input type="date" class="form-control" id="dataRecebimento"
-                            formControlName="dataRecebimento" />
+                        <input type="date" class="form-control" id="dataRecebimento" formControlName="dataRecebimento" />
                     </div>
                         <div class="form-group col-md-2">
                             <label for="statusRecebimento">Status do Recebimento:</label>
@@ -161,7 +159,16 @@
                         </select>
                     </div>
                     }
-                    <div class="form-group col-md-6" style="margin-bottom: 50px;">
+                    <div class="form-group col-md-2">
+                        <label for="carteiraId">Carteira:</label>
+                        <select id="carteiraId" class="form-select" formControlName="carteiraId" style="text-align: center;">
+                            <option value="">Selecione</option>
+                            @for( select of carteiras; track select.id){
+                            <option [value]="select.id">{{ select.conta }}</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4" style="margin-bottom: 50px;">
                         <div class="d-grid gap-2 mt-4">
                             <button class="btn btn-success btn-gravar" type="button"
                                 (click)="salvarMovimentoFinanceiro()">Registrar Movimento Financeiro</button>
@@ -171,6 +178,7 @@
             </form>
         </div>
         <hr style="margin-top: -15px;">
+        
         <div class="row col-12 col-md-12" style="margin-top: -15px; margin-bottom: 80px;">
             <div class="col-12 col-md-6">
                 <div class="d-grid gap-2 mt-4">

@@ -7,7 +7,7 @@ import { take } from 'rxjs';
 @Component({
   selector: 'app-receita-list',
   imports: [
-    RouterLink
+   
   ],
   templateUrl: './receita-list.component.html',
   styleUrl: './receita-list.component.css'

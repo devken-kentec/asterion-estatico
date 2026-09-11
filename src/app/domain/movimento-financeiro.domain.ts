@@ -10,6 +10,7 @@ export interface MovimentoFinanceiroReceita {
     observacao: string;
     receita: boolean;
     userId: number;
+    carteiraId: number;
     periodoId: number;
     descricaoReceitaId: number;
     descricaoReceita: string;
@@ -26,6 +27,7 @@ export interface MovimentoFinanceiroDespesa {
     valor: number;
     observacao: string;
     despesa: boolean;
+    carteiraId: number;
     userId: number;
     periodoId: number;
     descricaoDespesaId: number;

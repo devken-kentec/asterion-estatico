@@ -24,7 +24,7 @@ export class AppComponent {
   public url_atual!: string;
 
   ngOnInit() {
-    this.router.navigate(['/home']);
+    //this.router.navigate(['/home']);
     this.anoCorrente = new Date().getFullYear();
   }
 

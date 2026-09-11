@@ -1,0 +1,73 @@
+@if(normal){
+<div class="col-12 col-md-12" style="margin-top: 250px;">
+    <div class="col-12 col-md-12 d-flex justify-content-center" style="font-weight: bold;">
+        Faça seu Login aqui!
+    </div> 
+    <hr>
+    <div class="row col-12 col-md-12 d-flex justify-content-center">
+        <div class="form-group col-md-4">
+            <label for="email">Email:</label>
+            <input id="email" type="text" class="form-control" [(ngModel)]="email">
+        </div>
+    </div>
+    <div class="row col-12 col-md-12 d-flex justify-content-center">
+        <div class="form-group col-md-4">
+            <label for="senha">Senha:</label>
+            <input id="senha" type="password" class="form-control" [(ngModel)]="senha" maxlength="8">
+        </div>
+    </div>
+    <div class="col-12 col-md-12 d-flex justify-content-center" style="font-weight: bold;">
+        <a class="recupera-senha" (click)="recuperarSenha()" 
+           style="color: cornflowerblue !important; cursor: pointer;"  
+           onmouseenter="this.style.textDecoration='underline'"
+           onmouseleave="this.style.textDecoration='none'"
+           >Esqueceu a Senha!</a>        
+    </div> 
+    <hr>
+    <div class="row col-12 col-md-12 d-flex justify-content-center">
+        <div class="col-md-6">
+            <button class="btn btn-success btn-block" (click)="logarUser()">
+                Entrar
+            </button>
+        </div>
+    </div>
+</div>  
+} @else {
+<div class="col-12 col-md-12" style="margin-top: 250px;">
+        <div class="col-12 col-md-12 d-flex justify-content-center" style="font-weight: bold;">
+            Recupere sua Senha.
+        </div> 
+        <hr>
+        <div class="row col-12 col-md-12 d-flex justify-content-center">
+            <div class="form-group col-md-4">
+                <label for="email">Email:</label>
+                <input id="email" type="text" class="form-control" [(ngModel)]="emailR">
+            </div>
+        </div>
+        <div class="row col-12 col-md-12 d-flex justify-content-center">
+            <div class="form-group col-md-4">
+                <label for="senha">Nova Senha:</label>
+                <input id="senha" type="password" class="form-control" [(ngModel)]="senhaR1" maxlength="8">
+            </div>
+        </div>
+        <div class="row col-12 col-md-12 d-flex justify-content-center">
+            <div class="form-group col-md-4">
+                <label for="senha">Confirmar Senha:</label>
+                <input id="senha" type="password" class="form-control" (input)="testarSenha()" [(ngModel)]="senhaR2" maxlength="8">
+            </div>
+        </div>
+        @if(submeter){
+            <div class="row col-12 col-md-12 d-flex justify-content-center">
+                As Senhas estão corretas, agora e só enviar!
+            </div>
+        }
+    <hr>
+     <div class="row col-12 col-md-12 d-flex justify-content-center">
+        <div class="col-md-6">
+            <button class="btn btn-success btn-block">
+                Submeter
+            </button>
+        </div>
+    </div>
+</div>
+}
