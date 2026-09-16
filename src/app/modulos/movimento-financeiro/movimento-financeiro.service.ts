@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environments';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { MovimentoFinanceiroDespesa, MovimentoFinanceiroReceita } from '../../domain/movimento-financeiro.domain';
 
 @Injectable({
@@ -57,5 +57,27 @@ export class MovimentoFinanceiroService {
       console.log('Gravando Movimento Financeiro: ');
       return this.gravarMovimentoFinanceiroDespesa(movimentoFinanceiro);
     }
+  }
+
+  public buscaAvancada(dataInicial: string, dataFinal: string): Observable<MovimentoFinanceiroReceita[]> {
+
+    const httpParams = new HttpParams()
+    .set("dataInicial", dataInicial)
+    .set("dataFinal", dataFinal);
+
+    const url = this.api + "/buscarReceita?" + httpParams;
+
+    return this.http.get<MovimentoFinanceiroReceita[]>(url);
+  }
+
+  public buscaAvancadaDespesa(dataInicial: string, dataFinal: string): Observable<MovimentoFinanceiroDespesa[]> {
+
+    const httpParams = new HttpParams()
+    .set("dataInicial", dataInicial)
+    .set("dataFinal", dataFinal);
+
+    const url = this.api + "/buscarDespesa?" + httpParams;
+
+    return this.http.get<MovimentoFinanceiroDespesa[]>(url);
   }
 }

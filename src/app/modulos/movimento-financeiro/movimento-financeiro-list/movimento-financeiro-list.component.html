@@ -9,6 +9,7 @@
   <div>
       <button (click)="mostrarReceita()" class="btn btn-outline-primary btn-sm"><i class="fas fa-money-bill-wave"></i> Receita</button>
       <button (click)="mostrarDespesa()" class="btn btn-outline-danger btn-sm"><i class="fas fa-money-bill-wave"></i> Despesa</button> 
+      <button (click)="mostrarResultado()" class="btn btn-outline-success btn-sm"><i class="fas fa-money-bill-wave"></i> Resultado</button> 
   </div>   
 </div>
   @if(mostrarListaReceita){
@@ -21,6 +22,21 @@
     <div class="col-md-12 col-lg-12 col-xl-12 d-flex justify-content-end">
       <button routerLink="new" class="btn btn-primary float-right">
         <i class="fas fa-user-plus"></i> Nova Receita
+      </button>
+    </div>
+  </div>
+  <div class="row col-12 col-md-12 d-flex justify-content-center">
+    <div class="form-group col-md-2">
+      <label for="dataInicial">Data da Inicial:</label>
+      <input type="date" class="form-control" id="dataInicial" [(ngModel)]="dataInicial"  />
+    </div>
+    <div class="form-group col-md-2">
+      <label for="dataFinal">Data da Final:</label>
+      <input type="date" class="form-control" id="dataFinal" [(ngModel)]="dataFinal"/>
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-secondary" style="margin-top: 24px;" (click)="listaAvancada()">
+        <i class="fas fa-search"></i> Buscar
       </button>
     </div>
   </div>
@@ -63,7 +79,7 @@
   </div>
   }
   @if(mostrarListaDespesa){
-      <div class="row mb-4">
+  <div class="row mb-4">
     <div class="col-md">
       <h1 class="h5 border-left pl-2">
         Lista de Despesas
@@ -72,6 +88,21 @@
     <div class="col-md-12 col-lg-12 col-xl-12 d-flex justify-content-end">
       <button routerLink="new" class="btn btn-primary float-right">
         <i class="fas fa-user-plus"></i> Nova Despesa
+      </button>
+    </div>
+  </div>
+  <div class="row col-12 col-md-12 d-flex justify-content-center">
+    <div class="form-group col-md-2">
+      <label for="dataInicial">Data da Inicial:</label>
+      <input type="date" class="form-control" id="dataInicial" [(ngModel)]="dataInicial"  />
+    </div>
+    <div class="form-group col-md-2">
+      <label for="dataFinal">Data da Final:</label>
+      <input type="date" class="form-control" id="dataFinal" [(ngModel)]="dataFinal"/>
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-secondary" style="margin-top: 24px;" (click)="listaAvancadaDespesa()">
+        <i class="fas fa-search"></i> Buscar
       </button>
     </div>
   </div>
@@ -112,6 +143,20 @@
       </tbody>
     </table>
   </div>
+  }
+  @if(mostrarListaResultado){
+    <div class="row mb-4">
+      <div class="col-md">
+        <h1 class="h5 border-left pl-2">
+            Resultado
+        </h1>
+        <hr> 
+        <div class="text-center mt-4">
+          <span class="text-primary">{{ somaReceita.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) }}</span> - <span class="text-danger">{{ somaDespesa.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) }}</span>  = <span [ngClass]=" (somaReceita - somaDespesa) >= 0 ? 'text-success':'text-danger' " >{{ mostrarResulatado(somaReceita, somaDespesa).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) }}</span> 
+        </div>
+      </div>
+    </div>
+    <hr> 
   }
 
 </div>
