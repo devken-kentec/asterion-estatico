@@ -4,28 +4,18 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="/">Início</a></li>
                 <li class="breadcrumb-item"><a routerLink="/movfin">Listagem</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Movimento Financeiro</li>
+                <li class="breadcrumb-item active" aria-current="page">Movimento Financeiro Receita</li>
             </ol>
         </nav>
         <hr>
         <div class="col-12 col-md-12 mt-5">
             <form [formGroup]="movFinForm">
-                <div style="margin-top: -30px;">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" (click)="escolherOperacao()" id="inlineRadio1" value="option1" checked>
-                        <label class="form-check-label" for="inlineRadio1">Entradas</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" (click)="escolherOperacao()" id="inlineRadio2" value="option2">
-                        <label class="form-check-label" for="inlineRadio2">Saidas</label>
-                    </div>
-                </div>
                 <div class="row col-md-12 mt-4">
                     <div class="form-group col-md-1">
                         <label for="id">ID:</label>
                         <input type="text" class="form-control" id="id" formControlName="id" readonly />
                     </div>
-                    @if(idFin){
+                
                     <div class="form-group col-md-5">
                         <label for="descricaoReceita">Descrição da Receita:</label>
                         <select id="descricaoReceita" class="form-select" formControlName="descricaoReceitaId">
@@ -35,18 +25,8 @@
                             }
                         </select>
                     </div>
-                    }
-                    @if(!idFin){
-                    <div class="form-group col-md-5">
-                        <label for="descricaoDespesa">Descrição da Despesa:</label>
-                        <select id="descricaoDespesa" class="form-select" formControlName="descricaoDespesaId">
-                            <option value="">Selecione</option>
-                            @for( select of descricaoDespesas; track select.id){
-                            <option [value]="select.id">{{ select.descricao }}</option>
-                            }
-                        </select>
-                    </div>
-                    }
+            
+                   
                     <div class="form-group col-md-2">
                         <label for="periodoId">Periodo:</label>
                         <select id="periodoId" class="form-select" formControlName="periodoId">
@@ -67,7 +47,7 @@
                     </div>
                 </div>
                 <div class="row col-md-12 mt-3">
-                    @if(idFin){
+                   
                     <div class="form-group col-md-2">
                         <label for="dataReceita">Data da Receita:</label>
                         <input type="date" class="form-control" id="dataReceita" formControlName="dataReceita" />
@@ -85,34 +65,16 @@
                                 <option>Pago</option>
                             </select>
                         </div>
-                    }
+                 
 
-                    @if(!idFin){
-                    <div class="form-group col-md-2">
-                        <label for="dataDespesa">Data da Despesa:</label>
-                        <input type="date" class="form-control" id="dataDespesa" formControlName="dataDespesa" />
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="dataPagamento">Data do Pagamento:</label>
-                        <input type="date" class="form-control" id="dataPagamento" formControlName="dataPagamento" />
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="statusPagamento">Status do Pagamento:</label>
-                        <select id="statusPagamento" class="form-select" formControlName="statusPagamento">
-                            <option value="">Selecione</option>
-                            <option>Programado</option>
-                            <option>Aguardando</option>
-                            <option>Pago</option>
-                        </select>
-                    </div>
-                    }
+                 
                     <div class="form-group col-md-6">
                         <label for="observacao">Observação:</label>
                         <input type="text" class="form-control" id="observacao" formControlName="observacao" />
                     </div>
                 </div>
                 <div class="row col-md-12 mt-3">
-                    @if(idFin){
+                 
                     <div class="form-group col-md-3">
                         <label for="formaRecebimento">Forma do Recebimento:</label>
                         <select id="formaRecebimento" class="form-select" formControlName="formaRecebimento">
@@ -134,34 +96,10 @@
                             <option>Cartão de Débito</option>
                         </select>
                     </div>
-                    }
-
-                    @if(!idFin){
-                    <div class="form-group col-md-3">
-                        <label for="formaPagamento">Forma do Pagamento:</label>
-                        <select id="formaPagamento" class="form-select" formControlName="formaPagamento">
-                            <option value="">Selecione</option>
-                            <option>à Vista</option>
-                            <option>à Prazo</option>
-                            <option>Parcelado</option>
-                            <option>à Prazo com Juros</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="tipoPagamento">Tipo de Pagamento:</label>
-                        <select id="tipoPagamento" class="form-select" formControlName="tipoPagamento">
-                            <option value="">Selecione</option>
-                            <option>Dinheiro</option>
-                            <option>Pix</option>
-                            <option>Transferência</option>
-                            <option>Cartão de Crédito</option>
-                            <option>Cartão de Débito</option>
-                        </select>
-                    </div>
-                    }
+                  
                     <div class="form-group col-md-2">
                         <label for="carteiraId">Carteira:</label>
-                        <select id="carteiraId" class="form-select" formControlName="carteiraId" style="text-align: center;">
+                        <select id="carteiraId" class="form-select" formControlName="carteiraId">
                             <option value="">Selecione</option>
                             @for( select of carteiras; track select.id){
                             <option [value]="select.id">{{ select.conta }}</option>

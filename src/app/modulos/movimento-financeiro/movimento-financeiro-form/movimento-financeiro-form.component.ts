@@ -28,9 +28,7 @@ export class MovimentoFinanceiroFormComponent {
     private movimentoFinanceiroService = inject(MovimentoFinanceiroService);
 
     movFinForm!: FormGroup;
-    idFin!: boolean;
     descricaoReceitas: DescricaoReceita[] = [];
-    descricaoDespesas: DescricaoDespesa[] = [];
     periodos: Periodo[] = [];
     carteiras: Carteira[] = [];
 
@@ -61,21 +59,10 @@ export class MovimentoFinanceiroFormComponent {
       
       this.preencherComboboxPeriodo();
       this.preencherComboboxDescricaoReceita();
-      this.preencherComboboxDescricaoDespesa();
       this.preencherComboboxCarteira();
-      this.idFin = true;
-    }
-
-    public escolherOperacao(){
-        this.idFin = !this.idFin;
-        this.movFinForm.reset();
     }
 
     public preencherFromMovFinReceita(movimentoFinan: MovimentoFinanceiroReceita) {
-      this.movFinForm.patchValue(movimentoFinan);
-    }
-
-    public preencherFromMovFinDespesa(movimentoFinan: MovimentoFinanceiroDespesa) {
       this.movFinForm.patchValue(movimentoFinan);
     }
 
@@ -103,18 +90,6 @@ export class MovimentoFinanceiroFormComponent {
       });
     }
 
-    public preencherComboboxDescricaoDespesa() {
-      this.sharedService.comboboxDescricaoDespesa().pipe(take(1)).subscribe({
-         next: (res) => {
-           this.descricaoDespesas = res;  
-         },
-         error: (err) => {
-           console.log(err);
-           //this.sharedService.warningShow("Ops! Algo Errado!!", "Verifique o Console!");
-         }
-      });
-    }
-
     public preencherComboboxCarteira() {
       this.sharedService.comboboxCarteira().pipe(take(1)).subscribe({
          next: (res) => {
@@ -131,7 +106,7 @@ export class MovimentoFinanceiroFormComponent {
       let form = this.movFinForm;
       if(form.valid){
         form.get('userId')?.setValue(1);
-        if(this.idFin){
+        
           this.movFinForm.get('receita')?.setValue(true);
           this.movimentoFinanceiroService.salvarReceita(form.value).pipe(take(1)).subscribe({
               next: (res) => {
@@ -143,21 +118,9 @@ export class MovimentoFinanceiroFormComponent {
                 this.sharedService.warningShow("Ops! Algo Errado!!", "Verifique o Console!");
               }
             });
-        } else {
-          this.movFinForm.get('despesa')?.setValue(false);
-          this.movimentoFinanceiroService.salvarDespesa(form.value).pipe(take(1)).subscribe({
-              next: (res) => {
-                  this.preencherFromMovFinDespesa(res);
-                  this.sharedService.saveShow("Registro Salvo", "Sucesso!")
-              },
-              error: (err) => {
-                console.log(err);
-                this.sharedService.warningShow("Ops! Algo Errado!!", "Verifique o Console!");
-              }
-            });
-        }
       }
     }
+    
     public novoRegistro(): void {
       this.movFinForm.reset();
     }
