@@ -57,7 +57,7 @@ export class MovimentoFinanceiroListReceitaComponent {
     this.mostrarListaReceita = false;
     this.mostrarListaDespesa = true;
     this.mostrarListaResultado =  false;
-    this.listarDespesas();
+  
   }
 
   public mostrarResultado(){
@@ -67,7 +67,7 @@ export class MovimentoFinanceiroListReceitaComponent {
     this.mostrarListaDespesa = false;    
     this.mostrarListaResultado =  true;
     this.listarReceitas();
-    this.listarDespesas();
+
   }
 
   public listaAvancada(): void {
@@ -77,12 +77,7 @@ export class MovimentoFinanceiroListReceitaComponent {
     );
   }
 
-  public listaAvancadaDespesa(): void {
-    console.log(this.dataInicial, this.dataFinal);
-    this.movimentoFinanceiroService.buscaAvancadaDespesa(this.dataInicial, this.dataFinal).pipe(take(1)).subscribe(
-      res => { this.listaDespesas = res }
-    );
-  }
+  
 
   public listarReceitas(){
     this.movimentoFinanceiroService.listarMovimentoFinanceiroReceita().pipe(take(1)).subscribe(
@@ -95,16 +90,7 @@ export class MovimentoFinanceiroListReceitaComponent {
     )
   }
 
-    public listarDespesas(){
-    this.movimentoFinanceiroService.listarMovimentoFinanceiroDespesa().pipe(take(1)).subscribe(
-      res => {
-        this.listaDespesas = res;
-        res.forEach(element => {
-           this.somaDespesa = this.somaDespesa + element.valor;
-        });
-      }
-    )
-  }
+
 
   public mostrarResulatado(valorReceita: number, valorDespesa: number): number {
     return valorReceita - valorDespesa;

@@ -16,7 +16,7 @@
                         <input type="text" class="form-control" id="id" formControlName="id" readonly />
                     </div>
                   
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-3">
                         <label for="descricaoDespesa">Descrição da Despesa:</label>
                         <select id="descricaoDespesa" class="form-select" formControlName="descricaoDespesaId">
                             <option value="">Selecione</option>
@@ -25,7 +25,14 @@
                             }
                         </select>
                     </div>
-                
+                    <div class="form-group col-md-2">
+                        <label for="destino">Destino:</label>
+                        <select id="destino" class="form-select" formControlName="destino">
+                            <option value="">Selecione</option>
+                            <option>Empresa</option>
+                            <option>Pessoal</option>
+                        </select>
+                    </div>
                     <div class="form-group col-md-2">
                         <label for="periodoId">Periodo:</label>
                         <select id="periodoId" class="form-select" formControlName="periodoId">
@@ -46,9 +53,6 @@
                     </div>
                 </div>
                 <div class="row col-md-12 mt-3">
-          
-
-               
                     <div class="form-group col-md-2">
                         <label for="dataDespesa">Data da Despesa:</label>
                         <input type="date" class="form-control" id="dataDespesa" formControlName="dataDespesa" />
