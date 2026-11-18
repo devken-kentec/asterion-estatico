@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { SharedService } from '../../../../shared/shared.service';
-import { MovimentoFinanceiroService } from '../../movimento-financeiro/movimento-financeiro.service';
 import { DescricaoReceita } from '../../../domain/descricao-receita.domain';
 import { DescricaoDespesa } from '../../../domain/descricao-despesa.domain';
 import { Periodo } from '../../../domain/periodo.domain';
