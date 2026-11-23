@@ -165,7 +165,7 @@ export class SharedService {
     return caracteres.charAt(indiceAleatorio);
   }
 
-    public loginApi(email: string, senha: string): Observable<User> {
+  public loginApi(email: string, senha: string): Observable<User> {
 
     let senhaEncriptada = this.encryptionPassword(senha);
     let convertPass = this.stringParaHexadecimal(senhaEncriptada);
